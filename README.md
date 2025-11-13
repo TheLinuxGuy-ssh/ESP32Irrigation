@@ -30,7 +30,7 @@ This project provides a soil moisture monitoring system using an ESP32 and a soi
 2. Power the Arduino board.
 3. Monitor the display for real-time soil moisture readings.
 
-
+![ESP32Irrigation](https://raw.githubusercontent.com/TheLinuxGuy-ssh/ESP32Irrigation/refs/heads/main/ESP32.png)
 
 **Contributing**
   - Feel free to contribute to the project by submitting issues or pull requests. We welcome any improvements or bug fixes!
