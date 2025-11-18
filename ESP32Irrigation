@@ -4,9 +4,9 @@
 WebServer server(80);
 
 int _moisture, sensor_analog;
-const int sensor_pin = A0;
+const int sensor_pin = 34;
 
-const char* ssid = "Jan Pol Uzi";
+const char* ssid = "TheLinuxGuy";
 const char* password = "12345678";
 
 const char html_page[] PROGMEM = R"rawSrting(
