@@ -13,22 +13,89 @@ const char html_page[] PROGMEM = R"rawSrting(
 <!DOCTYPE html>
 <html>
 <style>
-    body {font-family: sans-serif;}
-    h1 {text-align: center; font-size: 30px;}
-    p {text-align: center; color: #4CAF50; font-size: 40px;}
+    body {
+        font-family: sans-serif;
+        background-color: #1e1e1e;
+    }
+    h1 {text-align: center;
+        font-size: 30px;
+        color: #fff;
+    }
+    #moisture {
+        text-align: center;
+        background-color: grey;
+        transition: 0.5s all;
+        font-size: 40px;
+        width: max-content;
+        font-weight: 500;
+        color: white;
+        margin: 0 auto;
+        padding: 0.5rem 1rem;
+        border-radius: 1rem;
+    }
+    #moisture.Low {
+        background-color: red !important;
+        color: white !important;
+    }
+    #moisture.Med {
+        background-color: yellow !important;
+        color: black !important;
+    }
+    #moisture.High {
+        background-color: #4CAF50 !important;
+        color: white !important;
+    }
+    #tip {
+        margin: 4rem auto;
+        color: #fff;
+        text-align: center;
+        font-size: 2rem;
+    }
+    .credits {
+        position: absolute;
+        bottom: 1rem; 
+        right: 1rem;
+        font-size: 1.35rem;
+        font-weight: bold;
+        color: #fff;
+    }
+    .highlight {
+        background-color: #4CAF50;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.5rem;
+    }
 </style>
  
 <body>
   <h1>ESP32 Irrigation</h1><br>
   <h2></h2>
-  <p>Moisture Level :<span id="MoistureVal">0</span>%</p><br>
-
+  <div id="moisture">Moisture Level: <span id="MoistureVal">0</span>%</div><br>
+  <div id="tip">Loading...</div>
+  <div class="credits">Made By <span class="highlight">TheLinuxGuy</span></div>
   <script>
     setInterval(function() { 
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
          document.getElementById("MoistureVal").innerHTML = this.responseText
+         if(responseText <= 5) {
+            document.getElementById("moisture").classList.remove("High");
+            document.getElementById("moisture").classList.remove("Med");
+            document.getElementById("moisture").classList.add("Low");
+            document.getElementById("tip").innerHTML = "Your plant is dehydrated! Water it immediately!"
+         }
+         else if(responseText <= 25) {
+            document.getElementById("moisture").classList.remove("High");
+            document.getElementById("moisture").classList.add("Med");
+            document.getElementById("moisture").classList.remove("Low");
+            document.getElementById("tip").innerHTML = "Your plant is OK! Water it after 15 minutes!"
+         }
+         else if(responseText > 25) {
+            document.getElementById("moisture").classList.add("High");
+            document.getElementById("moisture").classList.remove("Med");
+            document.getElementById("moisture").classList.remove("Low");
+            document.getElementById("tip").innerHTML = "Your plant is Healthy! Let it be in the sun for a while."
+         }
         }
       };
       xhttp.open("GET", "readMoisture", true);
