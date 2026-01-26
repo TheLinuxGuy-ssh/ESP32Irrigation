@@ -33,7 +33,7 @@ This project provides a soil moisture monitoring system using an ESP32 and a soi
 ![ESP32Irrigation](https://raw.githubusercontent.com/TheLinuxGuy-ssh/ESP32Irrigation/refs/heads/main/ESP32.png)
 
 **Contributing**
-  - Feel free to contribute to the project by submitting issues or pull requests. We welcome any improvements or bug fixes!
+  - Feel free to contribute to the project by submitting issues or pull requests. Any improvements or bug fixes are welcomed!
 
 **License**
   - This project is licensed under the MIT License. See the LICENSE file for more details.
@@ -43,4 +43,4 @@ For any questions or feedback, please reach out to:
 
 Developer: TheLinuxGuy
 
-Email: **mr.linux.0@protonmail.com**s
+Email: **mr.linux.0@protonmail.com**
